@@ -1,0 +1,10 @@
+C:\Users\pupy frias\source\repos\Selenium\bin\Debug\Selenium.dll
+C:\Users\pupy frias\source\repos\Selenium\bin\Debug\Selenium.pdb
+C:\Users\pupy frias\source\repos\Selenium\bin\Debug\SeleniumExtras.WaitHelpers.dll
+C:\Users\pupy frias\source\repos\Selenium\bin\Debug\WebDriver.dll
+C:\Users\pupy frias\source\repos\Selenium\bin\Debug\WebDriver.Support.dll
+C:\Users\pupy frias\source\repos\Selenium\obj\Debug\Selenium.csproj.AssemblyReference.cache
+C:\Users\pupy frias\source\repos\Selenium\obj\Debug\Selenium.csproj.CoreCompileInputs.cache
+C:\Users\pupy frias\source\repos\Selenium\obj\Debug\Selenium.csproj.CopyComplete
+C:\Users\pupy frias\source\repos\Selenium\obj\Debug\Selenium.dll
+C:\Users\pupy frias\source\repos\Selenium\obj\Debug\Selenium.pdb

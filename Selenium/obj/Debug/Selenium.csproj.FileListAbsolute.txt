@@ -8,3 +8,5 @@ C:\Users\pupy frias\source\repos\Selenium\obj\Debug\Selenium.csproj.CoreCompileI
 C:\Users\pupy frias\source\repos\Selenium\obj\Debug\Selenium.csproj.CopyComplete
 C:\Users\pupy frias\source\repos\Selenium\obj\Debug\Selenium.dll
 C:\Users\pupy frias\source\repos\Selenium\obj\Debug\Selenium.pdb
+C:\Users\HP\Documents\ITLA\4to Cuatrimesre Sept-Dic 2021\Cáclulo Integral -- Maximiliano Alvarez\Calculadora de integrales\Selenium\obj\Debug\Selenium.dll
+C:\Users\HP\Documents\ITLA\4to Cuatrimesre Sept-Dic 2021\Cáclulo Integral -- Maximiliano Alvarez\Calculadora de integrales\Selenium\obj\Debug\Selenium.pdb

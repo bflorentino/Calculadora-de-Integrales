@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4b51b5a2-f0cf-42fb-a78c-55ecf0d5bb52": {
+      "ProjectGuid": "4b51b5a2-f0cf-42fb-a78c-55ecf0d5bb52",
+      "DisplayName": "Cálculadora de Integrales",
+      "ColorIndex": 0
+    },
+    "efac0832-287d-4c50-9f1d-0941673bce22": {
+      "ProjectGuid": "efac0832-287d-4c50-9f1d-0941673bce22",
+      "DisplayName": "Selenium",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Selenium;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Cálculadora_de_Integrales
 {
@@ -15,7 +16,11 @@ namespace Cálculadora_de_Integrales
         //lista con los signos aritmeticos
         static List<Button> lista1 = new List<Button>();
         List<string> lista2 = new List<string>();
-        bool signosVerificacion = false;
+        
+        //LISTA PARA LAS TRIGONOMETRICAS
+        static List<Button> listaTrigo = new List<Button>();
+        List<String> stringTrigo = new List<string>();
+        int indiceTexto = 0;
 
         public Form1()
         {
@@ -25,11 +30,26 @@ namespace Cálculadora_de_Integrales
             lista1.Add(buttonDividir);
             lista1.Add(buttonMulti);
             /////
-            ///
+            ///basic arit
             lista2.Add("+");
             lista2.Add("-");
             lista2.Add("/");
             lista2.Add("*");
+
+            ///TRIGONOMETRICAS
+            listaTrigo.Add(btnCos);
+            listaTrigo.Add(btnCOSC);
+            listaTrigo.Add(btnTan);
+            listaTrigo.Add(btnSEC);
+            listaTrigo.Add(btnSeno);
+            listaTrigo.Add(btnCOTAG);
+
+            stringTrigo.Add("csc");
+            stringTrigo.Add("cot");
+            stringTrigo.Add("sec");
+            stringTrigo.Add("sis");
+            stringTrigo.Add("tan");
+            stringTrigo.Add("cos");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,6 +57,7 @@ namespace Cálculadora_de_Integrales
             Typing("1");
             revisionDato = true;
             EnableSing();
+            enableTrigo();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -44,6 +65,7 @@ namespace Cálculadora_de_Integrales
             Typing("2");
             revisionDato = true;
             EnableSing();
+            enableTrigo();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -51,6 +73,7 @@ namespace Cálculadora_de_Integrales
             Typing("3");
             revisionDato = true;
             EnableSing();
+            enableTrigo();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -58,6 +81,7 @@ namespace Cálculadora_de_Integrales
             Typing("4");
             revisionDato = true;
             EnableSing();
+            enableTrigo();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -65,6 +89,7 @@ namespace Cálculadora_de_Integrales
             Typing("5");
             revisionDato = true;
             EnableSing();
+            enableTrigo();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -72,6 +97,7 @@ namespace Cálculadora_de_Integrales
             Typing("6");
             revisionDato = true;
             EnableSing();
+            enableTrigo();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -79,6 +105,7 @@ namespace Cálculadora_de_Integrales
             Typing("7");
             revisionDato = true;
             EnableSing();
+            enableTrigo();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -86,6 +113,7 @@ namespace Cálculadora_de_Integrales
             Typing("8");
             revisionDato = true;
             EnableSing();
+            enableTrigo();
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -93,83 +121,116 @@ namespace Cálculadora_de_Integrales
             Typing("9");
             revisionDato = true;
             EnableSing();
+            enableTrigo();
         }
 
         private void buttonParentesisAbierto_Click(object sender, EventArgs e)
         {
-
-            textBox1.Text += "(";
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "(");
+            indiceTexto++;
             EnableSing();
+            enableTrigo();
         }
 
         private void buttonParentesisCerrado_Click(object sender, EventArgs e)
         {
-            textBox1.Text += ")";
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, ")");
+            indiceTexto++;
             EnableSing();
+            enableTrigo();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            textBox1.Text += "^";
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "^");
+            indiceTexto++;
             EnableSing();
+            enableTrigo();
         }
 
         private void buttonRaiz_Click(object sender, EventArgs e)
         {
-            textBox1.Text += "√";
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "√()");
+            indiceTexto += 2;
             EnableSing();
+            enableTrigo();
+        }
+
+        private void ColocarParentesis()
+        {
+            //textBox1.Text = textBox1.Text.Insert(textBox1.SelectionStart, "()");
         }
 
         private void buttonDividir_Click(object sender, EventArgs e)
         {
-            textBox1.Text += "/";
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "/");
+            indiceTexto++;
             unableSing();
+            enableTrigo();
         }
 
         private void buttonMulti_Click(object sender, EventArgs e)
         {
-            textBox1.Text += "*";
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "*");
+            indiceTexto++;
             unableSing();
+            enableTrigo();
         }
 
         private void buttonRestar_Click(object sender, EventArgs e)
         {
-            textBox1.Text += "-";
+            if (txtEnfocado)
+            {
+                textBox1.Text = textBox1.Text.Insert(indiceTexto, "-");
+                indiceTexto++;
+            }
+            else {
+                Typing("-");
+            }
             unableSing();
+            enableTrigo();
         }
 
         private void buttonSumar_Click(object sender, EventArgs e)
         {
-            textBox1.Text += "+";
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "+");
+            indiceTexto++;
             unableSing();
+            enableTrigo();
         }
 
         private void buttonPi_Click(object sender, EventArgs e)
         {
-            textBox1.Text += "π";
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "π");
+            indiceTexto++;
             EnableSing();
+            enableTrigo();
         }
 
         private void buttonY_Click(object sender, EventArgs e)
         {
             if (txtEnfocado == false)
             {
-                textBox1.Text += "y";
+                textBox1.Text = textBox1.Text.Insert(indiceTexto, "y");
+                indiceTexto++;
                 EnableSing();
+                enableTrigo();
             }
             else
             {
                 textBox2.Text = "y";
             }
-         
+
         }
 
         private void buttonX_Click(object sender, EventArgs e)
         {
             if (txtEnfocado == false)
             {
-                textBox1.Text += "x";
+                textBox1.Text = textBox1.Text.Insert(indiceTexto, "x");
+                indiceTexto++;
                 EnableSing();
+                enableTrigo();
             }
             else
             {
@@ -181,7 +242,8 @@ namespace Cálculadora_de_Integrales
         {
             if (revisionDato)
             {
-                textBox1.Text += ".";
+                textBox1.Text = textBox1.Text.Insert(indiceTexto, ".");
+                indiceTexto++;
                 revisionDato = false;
                 unableSing();
             }
@@ -194,40 +256,27 @@ namespace Cálculadora_de_Integrales
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-
             if (txtEnfocado)
             {
                 textBox2.Text = textBox2.Text.Substring(0, textBox2.Text.Length - 1);
             }
-            else if (limiteInferior && tbLimiteInferior.Text.Length > 0)
+            else if (limiteInferior && boxLimiteInferior.Text.Length > 0)
             {
-                tbLimiteInferior.Text = tbLimiteInferior.Text.Substring(0, tbLimiteInferior.Text.Length - 1);
+                boxLimiteInferior.Text = boxLimiteInferior.Text.Substring(0, boxLimiteInferior.Text.Length - 1);
+                //validacionesLimites();
             }
-            else if (limiteSuperior && tbLimiteSuperior.Text.Length > 0)
+            else if (limiteSuperior && boxLimiteSuperior.Text.Length > 0)
             {
-                tbLimiteSuperior.Text = tbLimiteSuperior.Text.Substring(0, tbLimiteSuperior.Text.Length - 1);
+                boxLimiteSuperior.Text = boxLimiteSuperior.Text.Substring(0, boxLimiteSuperior.Text.Length - 1);
+                //validacionesLimites();
             }
-            
             else if (textBox1.Text.Length > 0 && limiteInferior == false && limiteSuperior == false)
             {
-                textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
+                textBox1.Text = textBox1.Text.Substring(0, indiceTexto - 1);
+                indiceTexto--; 
                 VerificarSigno();
+                VerificarTrigonometrica();
             }
-
-        }
-
-        private void tbLimiteSuperior_Click(object sender, EventArgs e)
-        {
-            limiteSuperior = true;
-            limiteInferior = false;
-            txtEnfocado = false;
-        }
-
-        private void tbLimiteInferior_Click(object sender, EventArgs e)
-        {
-            limiteInferior = true;
-            limiteSuperior = false;
-            txtEnfocado = false;
         }
 
         private void button0_Click(object sender, EventArgs e)
@@ -239,6 +288,7 @@ namespace Cálculadora_de_Integrales
         {
             limiteInferior = false;
             limiteSuperior = false;
+            indiceTexto = textBox1.SelectionStart;
         }
 
         private void textBox2_MouseClick(object sender, MouseEventArgs e)
@@ -258,34 +308,41 @@ namespace Cálculadora_de_Integrales
 
         private void btnSeno_Click_1(object sender, EventArgs e)
         {
-            textBox1.Text += "sin";
-
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "sin()");
+            indiceTexto += 4;
+            panel2.Visible = !panel2.Visible;
         }
 
         private void btnCos_Click_1(object sender, EventArgs e)
         {
-            textBox1.Text += "cos";
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "cos()");
+            indiceTexto += 4;
+            panel2.Visible = !panel2.Visible;
         }
 
         private void btnTan_Click_1(object sender, EventArgs e)
         {
             textBox1.Text += "tan";
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "tan()");
+            indiceTexto += 4;
+            panel2.Visible = !panel2.Visible;
         }
 
         private void Typing(string x)
         {
             if (limiteSuperior)
             {
-                tbLimiteSuperior.Text += x;
+                boxLimiteSuperior.Text += x;
             }
             else if (limiteInferior)
             {
-                tbLimiteInferior.Text += x;
+                boxLimiteInferior.Text += x;
 
             }
             else
             {
-                textBox1.Text += x;
+                textBox1.Text = textBox1.Text.Insert(indiceTexto, x);  
+                indiceTexto++;
             }
         }
 
@@ -303,6 +360,18 @@ namespace Cálculadora_de_Integrales
             }
         }
 
+        private static void unableTrigo() {
+            foreach (var dato in listaTrigo) {
+                dato.Enabled = false;
+            }
+        }
+
+        private static void enableTrigo() {
+            foreach (var dato in listaTrigo) {
+                dato.Enabled = true;
+            }
+        }
+
         private void button10_Click(object sender, EventArgs e)
         {
             if(textBox2.Text != "")
@@ -312,36 +381,53 @@ namespace Cálculadora_de_Integrales
                 form.pictureBox1.Visible = false;
                 form.Visible = true; 
                 
-                string result = Selenium.Webdriver.MathSolver(textBox1.Text, tbLimiteInferior.Text, tbLimiteSuperior.Text, textBox2.Text);
+                string result = Selenium.Webdriver.MathSolver(textBox1.Text, boxLimiteInferior.Text, boxLimiteSuperior.Text, textBox2.Text);
                 form.label1.Visible = false;
                 form.pictureBox1.ImageLocation = result;
                 form.pictureBox1.Visible = true;
-
-
-
+                Clear();
             }
             else
             {
                 MessageBox.Show("Debe de especificar con respecto a que variable se va a integral");
                 txtEnfocado = true;
                 textBox2.Focus();
-            }
-            
-           
-            
+            }   
         }
 
-        public static void Clear()
+        public void Clear()
         {
             textBox1.Text = "";
-            tbLimiteInferior.Text = "";
-            tbLimiteSuperior.Text = "";
+            boxLimiteInferior.Text = "";
+            boxLimiteSuperior.Text = "";
             textBox2.Text = "";
+            indiceTexto = 0;
             EnableSing();
         }
-        
 
-        private void VerificarSigno() {
+        private void button17_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "csc()");
+            indiceTexto += 4;
+            panel2.Visible = !panel2.Visible;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "cot()");
+            indiceTexto += 4 ;
+            panel2.Visible = !panel2.Visible;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "sec");
+            indiceTexto += 4;
+            panel2.Visible = !panel2.Visible;
+        }
+
+        private void VerificarSigno() 
+        { 
             string ultimoCaracter;
             bool bandera = false;
             if (textBox1.Text.Length > 0)
@@ -361,6 +447,68 @@ namespace Cálculadora_de_Integrales
                 }
                 else {
                     EnableSing();
+                }
+            }
+        }
+        private void button15_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "e");
+            indiceTexto++;
+        }
+
+        private void boxLimiteSuperior_TextChanged(object sender, EventArgs e)
+        {
+                foreach (var datos in lista2)
+                {
+                    if (datos == "-")
+                    {
+                        unableSing();
+                    }
+                }
+        }
+
+        private void boxLimiteSuperior_Click_1(object sender, EventArgs e)
+        {
+            limiteSuperior = true;
+            limiteInferior = false;
+            txtEnfocado = false;
+        }
+
+        private void boxLimiteInferior_Click(object sender, EventArgs e)
+        {
+            limiteInferior = true;
+            limiteSuperior = false;
+            txtEnfocado = false;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "Ln()");
+            indiceTexto += 3;
+        }
+
+        private void VerificarTrigonometrica()
+        {
+            string ultimoCaracter;
+            bool bandera = false;
+            if (textBox1.Text.Length > 0)
+            {
+                ultimoCaracter = textBox1.Text.Substring(textBox1.Text.Length - 1);
+                //MessageBox.Show(ultimoCaracter);
+                foreach (var dato in stringTrigo)
+                {
+                    if (ultimoCaracter == dato)
+                    {
+                        bandera = true;
+                    }
+                }
+                if (bandera)
+                {
+                    unableTrigo();
+                }
+                else
+                {
+                    enableTrigo();
                 }
             }
         }

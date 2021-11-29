@@ -71,8 +71,6 @@ namespace Cálculadora_de_Integrales
             this.btnSeno = new System.Windows.Forms.Button();
             this.boxLimiteSuperior = new System.Windows.Forms.TextBox();
             this.boxLimiteInferior = new System.Windows.Forms.TextBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -357,6 +355,7 @@ namespace Cálculadora_de_Integrales
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(57, 31);
             this.textBox2.TabIndex = 36;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseClick);
             // 
             // button14
@@ -366,7 +365,7 @@ namespace Cálculadora_de_Integrales
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(59, 39);
             this.button14.TabIndex = 39;
-            this.button14.Text = "√";
+            this.button14.Text = "Ln";
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
@@ -541,35 +540,11 @@ namespace Cálculadora_de_Integrales
             this.boxLimiteInferior.TabIndex = 45;
             this.boxLimiteInferior.Click += new System.EventHandler(this.boxLimiteInferior_Click);
             // 
-            // button12
-            // 
-            this.button12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button12.Location = new System.Drawing.Point(150, 99);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(37, 23);
-            this.button12.TabIndex = 46;
-            this.button12.Text = "←";
-            this.button12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button13.Location = new System.Drawing.Point(193, 99);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(44, 23);
-            this.button13.TabIndex = 47;
-            this.button13.Text = "→";
-            this.button13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button13.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(416, 390);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button12);
             this.Controls.Add(this.boxLimiteInferior);
             this.Controls.Add(this.boxLimiteSuperior);
             this.Controls.Add(this.panel2);
@@ -659,8 +634,6 @@ namespace Cálculadora_de_Integrales
         private System.Windows.Forms.Button btnCOTAG;
         private System.Windows.Forms.TextBox boxLimiteSuperior;
         private System.Windows.Forms.TextBox boxLimiteInferior;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
     }
 }
 

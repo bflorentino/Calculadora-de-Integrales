@@ -19,5 +19,10 @@ namespace Cálculadora_de_Integrales
         {
             
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

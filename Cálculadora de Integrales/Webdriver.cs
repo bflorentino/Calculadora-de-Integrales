@@ -17,10 +17,8 @@ namespace Selenium
 
             using (IWebDriver driver = new ChromeDriver(driverService, options))
             {
-                try
-                    
-                {
-                    
+                try                    
+                {                  
                     WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                     driver.Navigate().GoToUrl("https://www.calculadora-de-integrales.com/");
                     IWebElement element = driver.FindElement(By.Id("expression"));
@@ -37,17 +35,13 @@ namespace Selenium
                         IWebElement upper = driver.FindElement(By.Id("upper-bound"));
                         IWebElement lower = driver.FindElement(By.Id("lower-bound"));
                         upper.SendKeys(lSuperior);
-                        lower.SendKeys(lInferior);
-                        
-
+                        lower.SendKeys(lInferior);                      
                         driver.FindElement(By.Id("go")).Click();
-                        IWebElement load = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.Id("calc")));
-            
+                        IWebElement load = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.Id("calc")));         
                         IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-
-                        js.ExecuteScript("document.querySelectorAll('.simplify-button').forEach(e => e.parentElement.remove());");
-                 
+                        js.ExecuteScript("document.querySelectorAll('.simplify-button').forEach(e => e.parentElement.remove());");             
                         IWebElement data;
+
                         try {
                             data = driver.FindElement(By.XPath("//*[@id=\"calc\"]/div[9]/div[4]"));
                         } 
@@ -69,9 +63,7 @@ namespace Selenium
                                 }
                             }
                         }
-
                         return Latex(Searcher(data), driver, wait);  ;
-
                     }
                     else
                     {
@@ -79,16 +71,12 @@ namespace Selenium
                         IWebElement data = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.Id("manual-antiderivative")));
                         string result = Searcher(data);
                         return Latex(result, driver, wait);
-
-                    }
-                    
+                    }              
                 }
                 catch(Exception e)
                 {
                     return e.ToString();
-                }
-
-                
+                }         
             }
         }
 
@@ -99,7 +87,6 @@ namespace Selenium
             string resultPart = html.Substring(index + 47);
             return resultPart.Substring(0, resultPart.IndexOf("<"));
         }
-
         public static string Latex (string data, IWebDriver driver, WebDriverWait wait)
         {
             driver.Navigate().GoToUrl("http://www.sciweavers.org/free-online-latex-equation-editor");

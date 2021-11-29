@@ -36,9 +36,9 @@ namespace Cálculadora_de_Integrales
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(27, 38);
+            this.pictureBox1.Location = new System.Drawing.Point(28, 40);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 67);
+            this.pictureBox1.Size = new System.Drawing.Size(239, 67);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -47,17 +47,18 @@ namespace Cálculadora_de_Integrales
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(66, 61);
+            this.label1.Location = new System.Drawing.Point(82, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "CARGANDO..";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Resultado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(259, 149);
+            this.ClientSize = new System.Drawing.Size(299, 149);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Resultado";

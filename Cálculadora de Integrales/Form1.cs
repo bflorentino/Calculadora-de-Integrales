@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Selenium;
+using System;
 using System.Collections.Generic;
-using Selenium;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace Cálculadora_de_Integrales
 {
@@ -35,6 +34,7 @@ namespace Cálculadora_de_Integrales
             lista2.Add("-");
             lista2.Add("/");
             lista2.Add("*");
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -116,8 +116,8 @@ namespace Cálculadora_de_Integrales
 
         private void button11_Click(object sender, EventArgs e)
         {
-            textBox1.Text = textBox1.Text.Insert(indiceTexto, "^");
-            indiceTexto++;
+            textBox1.Text = textBox1.Text.Insert(indiceTexto, "^()");
+            indiceTexto += 2;
             EnableSing();
         }
 
@@ -332,27 +332,42 @@ namespace Cálculadora_de_Integrales
 
         private void button10_Click(object sender, EventArgs e)
         {
+           
             if(textBox2.Text != "")
             {
                 Resultado form = new Resultado();
                 form.label1.Visible = true;
                 form.pictureBox1.Visible = false;
-                form.Visible = true;
-                var funcion = FuncionTraductor.Traducir(textBox1.Text);
+                form.Show();
+                string funcion = Traducir(textBox1.Text);
                 string result = Webdriver.MathSolver(funcion, boxLimiteInferior.Text, boxLimiteSuperior.Text, textBox2.Text);
-                form.label1.Visible = false;
-                form.pictureBox1.ImageLocation = result;
-                form.pictureBox1.Visible = true;
+                
+                if(result == "ERROR")
+                {
+                    form.label1.Text = "ERROR";
+                }
+                else
+                {
+                    form.label1.Visible = false;
+                    form.pictureBox1.ImageLocation = result;
+                    form.pictureBox1.Visible = true;
+                }
                 Clear();
+
+
             }
             else
             {
                 MessageBox.Show("Debe de especificar con respecto a que variable se va a integral");
                 txtEnfocado = true;
                 textBox2.Focus();
-            }   
+            } 
         }
-
+        public string Traducir(string integral)
+        {
+            var integralReescrita = integral.Replace("√", "raiz");
+            return integralReescrita;
+        }
         public void Clear()
         {
             textBox1.Text = "";
@@ -437,6 +452,11 @@ namespace Cálculadora_de_Integrales
             limiteInferior = true;
             limiteSuperior = false;
             txtEnfocado = false;
+        }
+
+        private void buttonOff_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void button14_Click(object sender, EventArgs e)
